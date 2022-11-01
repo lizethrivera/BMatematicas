@@ -97,7 +97,7 @@ if (localStorage.getItem('classroom') == null) {
 }
 
 //Empezar con 0
-document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/defaultProfilePic.png" alt="" srcset=""></img>`;
+// document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/defaultProfilePic.png" alt="" srcset=""></img>`;
 
 function obtenerInstructores() {
     document.getElementById('dropMenu').innerHTML = '';
@@ -138,32 +138,37 @@ function obtenerClases(indice) {
 
     indiceInstructorSeleccionada = indice;
     document.getElementById('tarjetasClases').innerHTML = '';
+    document.getElementById('clasesSideBar').innerHTML = '';
     document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/${classroom[indice].instructor.imagen}" alt="" srcset=""></img>`;
-    document.getElementById('clasesSideBar').innerHTML = `
-        <a href="#">Clases</a>`;
 
     for (let i = 0; i < classroom[indice].clases.length; i++) {
         var element = classroom[indice].clases;
         let random = Math.floor(Math.random() * (20 - 1) + 1);
+        var classLi = "";
 
         let r = Math.floor(Math.random() * (255 - 0) + 0);
         let g = Math.floor(Math.random() * (255 - 0) + 0);
         let b = Math.floor(Math.random() * (255 - 0) + 0);
 
+        console.log(i)
         let nImagen = "img"+ random+".jpg";
         //console.log(nImagen);
         
+        if(i == 0){
+            classLi = "list active";
+        }else{
+            classLi = "list";
+        }
+
         document.getElementById('clasesSideBar').innerHTML += `
-            <div class="todasClasesAba" style="display: inline-block;">
-                    <a href="#" class="menuArribaClases" style="display: flex; padding: 5px; justify-content: center; align-items: center;"><span class="infoInstructor col-1"><i class="rightBarIcons" style="margin-top: -12px; background-color: rgb(${r},${g},${b}); color: white; font-family: bold;">${element[i].nombreClase.charAt(0)}</i></span>
-                        <div class="infoInstructor col-11" style="margin: 0px 0px 0px 25px; margin-top: -10px;">
-                            <h6 style="margin-left: 10px; margin-bottom: 0px; font-family: Roboto, sans-serif;
-                            font-weight: 700; font-size: 0.9rem;">${element[i].nombreClase}</h6>
-                            <small class = "text-muted" style="margin-left: 10px; font-family: Roboto, sans-serif;">${element[i].seccion}</small>
-                        </div>
-                    </a>
-                
-            </div>
+            <li class="${classLi}">
+                <b></b>
+                <b></b>
+                <a href="#">
+                    <span class="icon"><i class="rightBarIcons" style="margin-top: 12px; margin-left: 10px; background-color: rgb(${r},${g},${b}); color: white; font-family: bold;">${element[i].nombreClase.charAt(0)}</i></span>
+                    <span class="title">${element[i].nombreClase}</span>
+                </a>
+            </li>
         `;
 
         
@@ -180,6 +185,18 @@ function obtenerClases(indice) {
 		</div>
         `;
     }
+
+    let list = document.querySelectorAll('.list');
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function(){
+                let j = 0;
+                while (j < list.length){
+                    list[j++].className = 'list';
+                }
+                list[i].className = 'list active';
+            }
+            
+        }
 }
 
 

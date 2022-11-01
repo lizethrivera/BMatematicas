@@ -79,8 +79,8 @@ a {
 }
 
 .rightBarIcons{
-    width: 48px;
-    height: 48px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -235,11 +235,12 @@ a {
 .cuerpo{
 	padding: 20px;
     display: grid;
-    grid-gap: 30px 30px;
+    /* grid-gap: 30px 30px; */
     text-overflow: ellipsis;
     justify-content: space-around;
     grid-template-columns: repeat(4,auto);
     margin-top: 50px;
+    margin-left: 70px;
 }
 
 a{
@@ -283,7 +284,7 @@ a{
 .titulo{
     width: 100%;
     font-family: Bold;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.75rem;
     color: #000000;
