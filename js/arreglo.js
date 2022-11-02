@@ -111,7 +111,7 @@ function obtenerInstructores() {
         <div class="instructor row" style="display: flex;" onclick="obtenerClases(${i})">
             <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/home/profile-pics/${classroom[i].instructor.imagen}" alt="" srcset=""></span>
             <div class="infoInstructor col-11">
-                <h5 style="margin-left: 10px; margin-bottom: 0px; font-family: bold; font-size: 15px;">${classroom[i].instructor.nombre}</h5>
+                <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;">${classroom[i].instructor.nombre}</h5>
                 <small class = "text-muted" style="margin-left: 10px;">${classroom[i].instructor.correo}</small>
             </div>
         </div>
@@ -123,11 +123,11 @@ function obtenerInstructores() {
     <div class="instructor row" style="display: flex;">
         <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
             <i class="fas fa-gear"></i>
-            <h5 style="margin-bottom: 0px; font-family: bold; font-size: 15px; margin-left: 18px;"> Configuracion</h5>
+            <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Configuracion</h5>
         </span>
         <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
             <i class="fas fa-right-from-bracket"></i>
-            <h5 style="margin-bottom: 0px; font-family: bold; font-size: 15px; margin-left: 18px;"> Cerrar Sesion</h5>
+            <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Cerrar Sesion</h5>
         </span>
     </div>
     `;
@@ -165,7 +165,7 @@ function obtenerClases(indice) {
                 <b></b>
                 <b></b>
                 <a href="#">
-                    <span class="icon"><i class="rightBarIcons" style="margin-top: 12px; margin-left: 10px; background-color: rgb(${r},${g},${b}); color: white; font-family: bold;">${element[i].nombreClase.charAt(0)}</i></span>
+                    <span class="icon"><i class="rightBarIcons" style="margin-top: 12px; margin-left: 10px; background-color: rgb(${r},${g},${b}); color: white; font-weight: 600">${element[i].nombreClase.charAt(0)}</i></span>
                     <span class="title">${element[i].nombreClase}</span>
                 </a>
             </li>

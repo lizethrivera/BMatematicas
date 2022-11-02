@@ -1,17 +1,7 @@
-@font-face {
-    font-family: 'Bold';
-    src: url("../fonts/ProductSansBold.ttf");
-} 
-
-@font-face {
-    font-family: 'Regular';
-    src: url("../fonts/Product\ Sans\ Regular.ttf");
-} 
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 body{
-    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-family: "Poppins", 'sans-serif';
 }
 
 a {
@@ -22,7 +12,7 @@ a {
 /* CSS NavBar*/
 #navBar {
     height: 63px!important;
-    border-bottom: 1px solid #E0E0E0;
+    /* border-bottom: 1px solid #E0E0E0; */
 }
 
 #btnMenu {
@@ -41,7 +31,7 @@ a {
 #tituloClassroom {
     color: #000000;
     font-size: 1.38125rem;
-    font-family: Regular;
+    /* font-family: Regular; */
     font-weight: 100;
 }
 
@@ -59,6 +49,11 @@ a {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+#leftBar i{
+    font-size: 26px;
+    cursor: pointer;
 }
 
 #rightBar {
@@ -148,7 +143,7 @@ a {
     color: #FFFFFF;
     display: block;
     transition: 0.3s;
-    font-family: Regular;
+    /* font-family: Regular; */
 }
 
 .menuArribaClases{
@@ -175,7 +170,7 @@ a {
 
 .todasClases span{
     padding-left: 24px;
-    font-family: 'Bold';
+    /* font-family: 'Bold'; */
     font-weight: 500;
     font-size: 0.875rem;
 }
@@ -186,7 +181,7 @@ a {
 
 .todasClasesAba span{
     letter-spacing: .01785714em;
-    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    /* font-family: 'Google Sans',Roboto,Arial,sans-serif; */
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
@@ -246,7 +241,7 @@ a {
 a{
 	color: black;
 	font-size: 13px;
-	font-family: Roboto,Helvetica,Arial,sans-serif;
+	/* font-family: Roboto,Helvetica,Arial,sans-serif; */
 	margin-top: 0px;
 	text-decoration: none;
 }
@@ -283,9 +278,9 @@ a{
 
 .titulo{
     width: 100%;
-    font-family: Bold;
+    /* font-family: Bold; */
     font-size: 0.8rem;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.75rem;
     color: #000000;
     text-overflow: ellipsis;
@@ -298,7 +293,7 @@ a{
 
 .nombre{
 	width: 210px;
-    font-family: Roboto,Helvetica,Arial,sans-serif;
+    /* font-family: Roboto,Helvetica,Arial,sans-serif; */
 	font-size: 13px;
 	color: #000000;
     display: block;
@@ -342,7 +337,7 @@ a{
 	margin-top: 0px;
 	font-size: 13px;
 	color:#566573 ;
-	font-family: Roboto,Helvetica,Arial,sans-serif;
+	/* font-family: Roboto,Helvetica,Arial,sans-serif; */
 }
 
 .pie{
@@ -401,7 +396,7 @@ a{
 
 /* Modal */
 #modalNuevaClase {
-    font-family: 'Bold';
+    /* font-family: 'Bold'; */
     font-size: 16px;
     margin: 20px 0px 0px 20px;
 }
@@ -411,11 +406,11 @@ a{
 }
 
 .modalBody {
-    font-family: 'Roboto',Helvetica,Arial,sans-serif;
+    /* font-family: 'Roboto',Helvetica,Arial,sans-serif; */
 }
 
 .modal-footer {
-    font-family: Bold;
+    /* font-family: Bold; */
     font-size: 14px;
     font-weight: 500;
     letter-spacing: .25px;
@@ -457,11 +452,104 @@ a{
 
 .pTexto {
     letter-spacing: .01785714em;
-    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    /* font-family: 'Google Sans',Roboto,Arial,sans-serif; */
     font-size: 0.875rem;
     font-weight: 500;
     line-height: 1.25rem;
     color: #3c4043;
     margin-left: 25%;
     padding-left: 30%;
+}
+
+.booksTitles{
+    margin-top: 20px;
+    margin-left: 130px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.booksTitles i{
+    font-size: 30px;
+    color: white;
+}
+
+.booksTitles .bookIcon{
+    background: #4D5BF9;
+}
+
+.iconBook{
+    background: #4D5BF9;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-right: 15px;
+}
+
+
+.search_box .input{
+	border: 0;
+	outline: none;
+	color: black;
+}
+
+.search_wrap{
+	width: 450px;
+	margin: 38px auto;
+}
+
+/* .search_wrap .search_box{
+	position: relative;
+	width: 500px;
+	height: 60px;
+} */
+
+.search_wrap .search_box .input{
+	/* position: absolute; */
+	/* top: 0;
+	left: 0; */
+	width: 100%;
+	height: 100%;
+	/* padding: 10px 20px; */
+	border-radius: 3px;
+	font-size: 18px;
+}
+
+.search_wrap .search_box .btn{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	background: #7690da;
+	z-index: 1;
+	cursor: pointer;
+}
+
+.search_wrap .search_box .btn:hover{
+	background: #708bd2;	
+}
+
+.search_wrap .search_box .btn.btn_common .fas{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: #fff;
+	font-size: 20px;
+}
+
+.search_wrap.search_wrap_3 .search_box .input{
+	padding-right: 80px;
+}
+
+.search_wrap.search_wrap_3 .search_box .input,
+.search_wrap.search_wrap_4 .search_box .input,
+.search_wrap.search_wrap_6 .search_box .input{
+	border-radius: 50px;
+}
+
+.search_wrap.search_wrap_3 .search_box .btn{
+	right: 8.5%;
+	border-radius: 50%;
+    margin-top: -4px;
 }
