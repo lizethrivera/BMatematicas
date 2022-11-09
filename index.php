@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/logo_B.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/index.css" />
     <title>Biblioteca Virtual</title>
 </head>
@@ -13,39 +13,47 @@
             <div class="forms-container">
                 <div class="signin-signup">
                     <!-- FORM PARA INICIO DE SESION -->
-                    <form action="#" class="sign-in-form">
+                    <form action="" method="post" class="sign-in-form">
                         <h2 class="title">Inicia Sesión</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" name="usuario" placeholder="Usuario" />
+                            <input type="text" name="usuario" placeholder="Usuario" autocomplete="new-user" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" name="password" placeholder="Contraseña" />
+                            <input type="password" name="password" placeholder="Contraseña" autocomplete="new-password" />
                         </div>
-                        <input type="submit" value="Entrar" class="btn solid" />
+                            <?php
+                                require('backend/config.php');
+                                require('backend/login_Controller.php');
+                            ?>
+                        <input type="submit" value="Entrar" name="login" class="btn solid" />
                     </form>
 
                     <!-- FORM PARA REGISTRO DE USUARIO -->
-                    <form action="#" class="sign-up-form">
+                    <form action="" method="post" class="sign-up-form" id="registerForm">
                         <h2 class="title">Registrate</h2>
                         <div class="input-field">
                             <i class="fas fa-pen"></i>
-                            <input type="text" name="nombreCompleto" placeholder="Nombre Completo" />
+                            <input type="text" name="nombreCompleto" placeholder="Nombre Completo" autocomplete="new-name"/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" name="usuario" placeholder="Usuario" />
+                            <input type="text" name="usuario" placeholder="Usuario" autocomplete="new-user" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" name="correo" placeholder="Correo Electrónico" />
+                            <input type="email" name="correo" placeholder="Correo Electrónico" autocomplete="new-email"/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" name="password" placeholder="Contraseña" />
+                            <input type="password" name="password" placeholder="Contraseña" autocomplete="new-password" />
                         </div>
-                        <input type="submit" class="btn" value="Registrarse" />
+                            <?php
+                                require('backend/config.php');
+                                require('backend/register_Controller.php');
+                            ?>
+                        <input name="registro" type="submit" class="btn" value="Registrarse" />
                     </form>
                 </div>
             </div>

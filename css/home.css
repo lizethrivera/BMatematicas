@@ -5,8 +5,8 @@ body{
 }
 
 a {
-    text-decoration: none;
-    pointer-events: none;
+    /* text-decoration: none; */
+    /* pointer-events: none; */
 }
 
 /* CSS NavBar*/
@@ -97,7 +97,7 @@ a {
     display: inline-block;
 }
 
-.rightBarIcons span i{
+.rightBarIcons span i, .rightBarIcons span a i{
     height: 16px;
     width: 16px;
 }
@@ -207,6 +207,7 @@ a {
 /* Dropdown Instructores */
 .dropdown-menu {
     padding: 0!important;
+    top: 45px!important;
 }
 
 .infoInstructor {
@@ -238,13 +239,19 @@ a {
     margin-left: 70px;
 }
 
-a{
-	color: black;
-	font-size: 13px;
-	/* font-family: Roboto,Helvetica,Arial,sans-serif; */
-	margin-top: 0px;
-	text-decoration: none;
+.a_CerrarSesion:link, .a_CerrarSesion:hover, .a_CerrarSesion:visited, .a_CerrarSesion:active
+.config_Perfil:link, .config_Perfil:hover, .config_Perfil:visited, .config_Perfil:active {
+    text-decoration:none;
+    color: #3c4043;
 }
+
+.a_CerrarSesion, .config_Perfil{
+    color: #3c4043;
+    text-decoration: none;
+    display: flex;
+    padding-left: 3px;
+}
+
 .tarjeta{
 	width: 300px;
 	height: auto;

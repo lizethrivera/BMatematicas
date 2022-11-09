@@ -100,37 +100,37 @@ if (localStorage.getItem('classroom') == null) {
 // document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/defaultProfilePic.png" alt="" srcset=""></img>`;
 
 function obtenerInstructores() {
-    document.getElementById('dropMenu').innerHTML = '';
-    var texto = '';
+    // document.getElementById('dropMenu').innerHTML = '';
+    // var texto = '';
     
-    for (let i = 0; i < classroom.length; i++) {
-        const element = classroom[i].instructor.nombre;
+    // for (let i = 0; i < classroom.length; i++) {
+    //     const element = classroom[i].instructor.nombre;
 
-        //console.log(element);
-        document.getElementById('dropMenu').innerHTML += `
-        <div class="instructor row" style="display: flex;" onclick="obtenerClases(${i})">
-            <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/home/profile-pics/${classroom[i].instructor.imagen}" alt="" srcset=""></span>
-            <div class="infoInstructor col-11">
-                <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;">${classroom[i].instructor.nombre}</h5>
-                <small class = "text-muted" style="margin-left: 10px;">${classroom[i].instructor.correo}</small>
-            </div>
-        </div>
-        ${texto}
-        `;
-    }
+    //     //console.log(element);
+    //     document.getElementById('dropMenu').innerHTML += `
+    //     <div class="instructor row" style="display: flex;" onclick="obtenerClases(${i})">
+    //         <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/home/profile-pics/${classroom[i].instructor.imagen}" alt="" srcset=""></span>
+    //         <div class="infoInstructor col-11">
+    //             <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;">${classroom[i].instructor.nombre}</h5>
+    //             <small class = "text-muted" style="margin-left: 10px;">${classroom[i].instructor.correo}</small>
+    //         </div>
+    //     </div>
+    //     ${texto}
+    //     `;
+    // }
     //Otra Info para Dropdown
-    document.getElementById('dropMenu').innerHTML += `
-    <div class="instructor row" style="display: flex;">
-        <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
-            <i class="fas fa-gear"></i>
-            <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Configuracion</h5>
-        </span>
-        <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
-            <i class="fas fa-right-from-bracket"></i>
-            <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Cerrar Sesion</h5>
-        </span>
-    </div>
-    `;
+    // document.getElementById('dropMenu').innerHTML += `
+    // <div class="instructor row" style="display: flex;">
+    //     <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
+    //         <i class="fas fa-gear"></i>
+    //         <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Configuracion</h5>
+    //     </span>
+    //     <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
+    //         <i class="fas fa-right-from-bracket"></i>
+    //         <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Cerrar Sesion</h5>
+    //     </span>
+    // </div>
+    // `;
     }
 
 function obtenerClases(indice) {
@@ -139,7 +139,7 @@ function obtenerClases(indice) {
     indiceInstructorSeleccionada = indice;
     document.getElementById('tarjetasClases').innerHTML = '';
     document.getElementById('clasesSideBar').innerHTML = '';
-    document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/${classroom[indice].instructor.imagen}" alt="" srcset=""></img>`;
+    // document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/${classroom[indice].instructor.imagen}" alt="" srcset=""></img>`;
 
     for (let i = 0; i < classroom[indice].clases.length; i++) {
         var element = classroom[indice].clases;
@@ -181,6 +181,11 @@ function obtenerClases(indice) {
                 <a class="parte1" href="">
                     <div class="titulo">${element[i].seccion} - ${element[i].nombreClase}</div>	
                 </a>
+			</div>
+
+            <div class="pie">				
+				<span class="icon2"><i class="fa-solid fa-pen"></i></span>
+				<span class="icon1"><i class="fa-solid fa-eye"></i></span>
 			</div>
 		</div>
         `;

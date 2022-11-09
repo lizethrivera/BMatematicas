@@ -270,6 +270,13 @@ form.sign-in-form {
     pointer-events: all;
 }
 
+.error{
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.7rem 0;
+    color: red;
+}
+
 @media (max-width: 870px) {
     .container {
         min-height: 800px;

@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +12,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e6dfebc255.js" crossorigin="anonymous"></script>
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo_B.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/sidebar.css">
     
 </head>
 <body>
-    
     <!-- Navbar -->
     <div class="wrapper">
         <nav class="navbar navbar-expand-lg" id="navBar">
@@ -39,12 +42,32 @@
                 <!-- <div class="rightBarIcons plusBar">
                     <span data-toggle="modal" data-target="#modalAddClass"><i class="fas fa-search" style="color: #000;"></i></span>
                 </div> -->
-
+                
                 <div class="rightBarIcons dropdown" id="profilePicMenu">
-                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic" onclick="obtenerInstructores()"></span>
-
-                    <div class="dropdown-menu dropdown-menu-right" style="width: 359px; border-radius: 3%;" aria-labelledby="imgInstructor" id="dropMenu">
-
+                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" src="img/images/default_user.png" alt="" srcset=""></img></span>
+                    <!-- DropDownMenu -->
+                    <div class="dropdown-menu dropdown-menu-right" style="width: 300px; border-radius: 3%;" aria-labelledby="imgInstructor" id="dropMenu">
+                        <div class="instructor row" style="display: flex;">
+                            <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/images/default_user.png" alt="" srcset=""></span>
+                            <div class="infoInstructor col-11">
+                                <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;"><?php echo $_SESSION['usuario']?></h5>
+                                <small class = "text-muted" style="margin-left: 10px;"><?php echo $_SESSION['correo']?></small>
+                            </div>
+                        </div>
+                        <div class="instructor row" style="display: flex;">
+                            <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
+                                <a class="config_Perfil" href="#">
+                                    <i class="fas fa-gear"></i>
+                                    <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px;"> Configuracion</h5>
+                                </a>
+                            </span>
+                            <span class="dropdown-item infoInstructor"style ="display:flex; margin: 5px 0px 0px 13px;" id = "addUser">
+                                <a class="a_CerrarSesion" href="backend/cerrar_sesion.php">
+                                    <i class="fas fa-right-from-bracket"></i>
+                                    <h5 style="margin-bottom: 0px; font-size: 15px; margin-left: 18px; margin-top: -1px;"> Cerrar Sesion</h5>
+                                </a>    
+                            </span>
+                        </div>
                     </div>
                     
                 </div>        
@@ -60,9 +83,9 @@
                 
             </ul>
         </div>
-
+        
     </div>
-
+    
     <div class="booksTitles">
         <div class="iconBook">
             <span class="bookIcon"><i class="fa-solid fa-book"></i></span>
