@@ -16,13 +16,20 @@
             if($resultado = $conn->query($select)){
                 while($row = $resultado->fetch_array()){
                     if ($row['rol'] == 'admin') {
-                        header("Location: homeAdmin.php");
+                        session_start();
+                        $_SESSION['nombreCompleto'] = $row['nombreCompleto'];
+                        $_SESSION['usuario'] = $row['usuario'];
+                        $_SESSION['correo'] = $row['correo'];
+                        $_SESSION['img_Perfil'] = $row['img_Perfil'];
+                        $_SESSION['rol'] = $row['rol'];
+                        header("Location: home.php");
                     }elseif($row['rol'] == 'usuario'){
                         session_start();
                         $_SESSION['nombreCompleto'] = $row['nombreCompleto'];
                         $_SESSION['usuario'] = $row['usuario'];
                         $_SESSION['correo'] = $row['correo'];
                         $_SESSION['img_Perfil'] = $row['img_Perfil'];
+                        $_SESSION['rol'] = $row['rol'];
                         header("Location: home.php");
                     }else {
                         echo "<p class='error'>¡La cuenta no existe!</p>";

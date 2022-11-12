@@ -4,8 +4,8 @@ body{
     font-family: "Poppins", 'sans-serif';
 }
 
-a {
-    /* text-decoration: none; */
+a, a:hover {
+    text-decoration: none;
     /* pointer-events: none; */
 }
 
@@ -258,7 +258,8 @@ a {
 	background: white;
 	border-radius: 10px;
 	border-width: 1px;
-	border:1px solid #ccc;; 
+	border:1px solid #ccc;
+    margin-bottom: 25px;
 }
 
 .tarjeta:hover{
@@ -316,7 +317,7 @@ a {
     width: 300px;
     height: auto; 
     padding: 20px 5px;
-    border-bottom:1px solid #ccc;
+    /* border-bottom:1px solid #ccc; */
 }
 
 .puntosIcon {
@@ -527,13 +528,13 @@ a {
 	position: absolute;
 	width: 40px;
 	height: 40px;
-	background: #7690da;
+	background: #6C63FF;
 	z-index: 1;
 	cursor: pointer;
 }
 
 .search_wrap .search_box .btn:hover{
-	background: #708bd2;	
+	background: #847fec;	
 }
 
 .search_wrap .search_box .btn.btn_common .fas{
@@ -559,4 +560,46 @@ a {
 	right: 8.5%;
 	border-radius: 50%;
     margin-top: -4px;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
 }
+/* 
+#search_icon{
+    position: absolute;
+    display: block;
+    bottom: .5rem;
+    right: 1rem;
+    
+    user-select: none;
+    cursor: pointer;
+} */
+
+.bookDetails .booksTitles{
+    margin-left: 0px!important;
+}
+
+.bookDetails .agg_libro{
+    margin-left: auto;
+}
+
+.agg_libro .btn{
+    width: 150px;
+    background-color: #6C63FF;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 134px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+.agg_libro .btn:hover {
+    background-color: #847fec;
+}
+

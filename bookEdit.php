@@ -1,5 +1,18 @@
 <?php
     session_start();
+
+    require('backend/config.php');
+
+    $libro_iD = $_GET['libro'];
+
+    $consulta = "SELECT * FROM libros WHERE iD = '$libro_iD'";
+    $libro = mysqli_query($conn, $consulta);
+
+    while($row = mysqli_fetch_array($libro)){
+        $titulo = $row['titulo'];
+        $id_clase = $row['id_clase'];
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +21,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Biblioteca Virtual</title>
+    <title>Editar - <?php echo $titulo?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e6dfebc255.js" crossorigin="anonymous"></script>
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <link rel="shortcut icon" href="img/logo_B.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/homeAdmin.css">
     
 </head>
 <body>
@@ -32,7 +46,7 @@
                 <div class="search_wrap search_wrap_3">
                     <form action="" method="post">
                         <div class="search_box">
-                            <input type="text" name="buscar_l" class="input" placeholder="Buscar...">
+                            <input type="text" name="buscar_l" class="input" placeholder="Buscar..." autocomplete="new-search">
                             <!-- <i class="fas fa-search" id="search_icon"></i> -->
                             <?php
                                 require('backend/config.php');
@@ -81,8 +95,10 @@
 
         <div class="navigation">
             <div class="logo">
-                <span><i class="fa-solid fa-circle-nodes"></i></span>
-                <span class="libraryTitle">Biblioteca Virtual</span>
+                <a href="home.php">
+                    <span><i class="fa-solid fa-circle-nodes"></i></span>
+                    <span class="libraryTitle">Biblioteca Virtual</span>
+                </a>
             </div>
             <ul id="clasesSideBar">
                 <?php
@@ -91,18 +107,18 @@
 
                     $resultado = mysqli_query($conn, $clases);
                     while($row = mysqli_fetch_array($resultado)){
-                        // if($row['iD'] != 1){
-                        //     $class = "list";
-                        // }else{
-                        //     $class = "list active";
-                        // }
+                        if($row['iD'] == $id_clase){
+                            $class = "list active";
+                        }else{
+                            $class = "list";
+                        }
 
                     $min = 0;
                     $max = 255;
 
                 ?>
 
-                <li class="list">
+                <li class="<?php echo $class?>">
                     <!-- <b></b>
                     <b></b> -->
                     <a href="homeBooks.php?clase=<?php echo $row['iD']?>">
@@ -121,32 +137,68 @@
         <div class="iconBook">
             <span class="bookIcon"><i class="fa-solid fa-code-merge"></i></span>
         </div>
-        <span><h3>Hola de nuevo <?php echo $_SESSION['nombreCompleto']?>!</h3></span>
+        <span><h3>Editar Libro</h3></span>
     </div>
 
-    <!-- Classes Info -->
-    <div class="cuerpo" id="tarjetasClases">
-        <?php	
-            require('backend/config.php');
-            require('backend/clases.php');
-
-            $resultado = mysqli_query($conn, $clases);
-            while ($row = mysqli_fetch_array($resultado)) {
-
-                ?>
-            <div class="tarjeta">
-                <div class="cabecera" style="background: url(img/home/classes-background/img<?php echo $row['iD']?>.jpg);background-repeat: no-repeat;-webkit-background-size: cover;background-size: cover;">
+    <!-- Agregar Libro Formulario -->
+    <div class="container form-aggLibro">
+        <form action="">
+            <div class="row">
+                <div class="col-4 mb-3 mt-3">
+                    <label for="titulo" class="form-label">Titulo</label>
+                    <input type="text" class="form-control" value="<?php echo $titulo?>" name="titulo">
                 </div>
+    
+                <div class="col-4 mb-3 mt-3">
+                    <label for="autor" class="form-label">Autor</label>
+                    <input type="text" class="form-control" name="autor">
+                </div>
+
+                <div class="col-4 mb-3 mt-3">
+                    <label for="editorial" class="form-label">Editorial</label>
+                    <input type="text" class="form-control" name="editorial">
+                </div>
+
+                <div class="col-4 mb-3 mt-3">
+                    <label for="edicion" class="form-label">Edicion</label>
+                    <input type="number" class="form-control" name="edicion">
+                </div>
+
+
+                <div class="col-4 mb-3 mt-3">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input type="number" class="form-control" name="isbn">
+                </div>
+
+                <div class="col-4 mb-3 mt-3">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" name="fecha">
+                </div>
+
+                <div class="col-6 mb-3 mt-3">
+                    <label for="no_paginas" class="form-label">No. de Paginas</label>
+                    <input type="number" class="form-control" name="no_paginas">
+                </div>
+
+                <div class="col-6 mb-3 mt-3">
+                    <label for="portada" class="form-label">Imagen Portada</label>
+                    <input type="file" class="form-control" name="portada">
+                </div>
+
+                <div class="col-6 mb-3 mt-3">
+                    <label for="archivo" class="form-label">Adjuntar Archivo PDF</label>
+                    <input type="file" class="form-control" name="archivo">
+                </div>
+
                 
-                <div class="medio">				
-                    <a class="parte1" href="homeBooks.php?clase=<?php echo $row['iD']?>">
-                        <div class="titulo"><?php echo $row['nombreClase']?></div>	
-                    </a>
-                </div>
             </div>
-        <?php }?>
-    </div>
 
+            <div class="col-12 btn_agregar mt-4">
+                <input name="editar_libro" type="submit" class="btn agregar_libro" value="Editar Libro" />
+            </div>
+            
+        </form>
+    </div>
     
 
     <!-- Modal -->

@@ -1,5 +1,17 @@
 <?php
     session_start();
+
+    require('backend/config.php');
+
+    $clase_iD = $_GET['clase'];
+
+    $consulta = "SELECT * FROM clases WHERE iD = '$clase_iD'";
+    $librosClase = mysqli_query($conn, $consulta);
+
+    while($row = mysqli_fetch_array($librosClase)){
+        $nombreClase = $row['nombreClase'];
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +20,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Biblioteca Virtual</title>
+    <title>Libros - <?php echo $nombreClase?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e6dfebc255.js" crossorigin="anonymous"></script>
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <link rel="shortcut icon" href="img/logo_B.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/homeBooks.css">
     
 </head>
 <body>
@@ -32,7 +45,7 @@
                 <div class="search_wrap search_wrap_3">
                     <form action="" method="post">
                         <div class="search_box">
-                            <input type="text" name="buscar_l" class="input" placeholder="Buscar...">
+                            <input type="text" name="buscar_l" class="input" placeholder="Buscar..." autocomplete="new-search">
                             <!-- <i class="fas fa-search" id="search_icon"></i> -->
                             <?php
                                 require('backend/config.php');
@@ -81,9 +94,12 @@
 
         <div class="navigation">
             <div class="logo">
-                <span><i class="fa-solid fa-circle-nodes"></i></span>
-                <span class="libraryTitle">Biblioteca Virtual</span>
+                <a href="home.php">
+                    <span><i class="fa-solid fa-circle-nodes"></i></span>
+                    <span class="libraryTitle">Biblioteca Virtual</span>
+                </a>
             </div>
+            
             <ul id="clasesSideBar">
                 <?php
                     require('backend/config.php');
@@ -91,18 +107,18 @@
 
                     $resultado = mysqli_query($conn, $clases);
                     while($row = mysqli_fetch_array($resultado)){
-                        // if($row['iD'] != 1){
-                        //     $class = "list";
-                        // }else{
-                        //     $class = "list active";
-                        // }
+                        if($row['iD'] == $_GET['clase']){
+                            $class = "list active";
+                        }else{
+                            $class = "list";
+                        }
 
                     $min = 0;
                     $max = 255;
 
                 ?>
 
-                <li class="list">
+                <li class="<?php echo $class?>">
                     <!-- <b></b>
                     <b></b> -->
                     <a href="homeBooks.php?clase=<?php echo $row['iD']?>">
@@ -117,35 +133,74 @@
         
     </div>
     
-    <div class="booksTitles">
-        <div class="iconBook">
-            <span class="bookIcon"><i class="fa-solid fa-code-merge"></i></span>
+    <div class="container bookDetails">
+        <div class="booksTitles">
+            <div class="iconBook">
+                <span class="bookIcon"><i class="fa-solid fa-book"></i></span>
+            </div>
+            <span><h3>Libros</h3></span>
+            <!-- <div class="iconBook">
+                <span class="bookIcon"><i class="fa-solid fa-book"></i></span>
+            </div> -->
+            <?php
+                if($_SESSION['rol'] == 'admin'){
+                    echo '<div class="agg_libro">';
+                        echo '<a href="homeAdmin.php?clase='.$clase_iD.'" class="btn">Agregar Libro</a>';
+                    echo '</div>';
+                }
+            ?>
         </div>
-        <span><h3>Hola de nuevo <?php echo $_SESSION['nombreCompleto']?>!</h3></span>
     </div>
 
     <!-- Classes Info -->
-    <div class="cuerpo" id="tarjetasClases">
-        <?php	
+    <!-- <div class="cuerpo" id="tarjetasClases">
+        <?php
             require('backend/config.php');
-            require('backend/clases.php');
+            require('backend/libros.php');
 
-            $resultado = mysqli_query($conn, $clases);
-            while ($row = mysqli_fetch_array($resultado)) {
+            $resultado = mysqli_query($conn, $libros);
+            while($row = mysqli_fetch_array($resultado)){
+                if($row['id_clase'] == $clase_iD){
+                    echo '<a href="bookDetails.php?libro='.$row['iD'].'">'.$row['titulo'].'</a>';
+                }
 
-                ?>
-            <div class="tarjeta">
-                <div class="cabecera" style="background: url(img/home/classes-background/img<?php echo $row['iD']?>.jpg);background-repeat: no-repeat;-webkit-background-size: cover;background-size: cover;">
-                </div>
-                
-                <div class="medio">				
-                    <a class="parte1" href="homeBooks.php?clase=<?php echo $row['iD']?>">
-                        <div class="titulo"><?php echo $row['nombreClase']?></div>	
+            } 
+        ?>
+    </div> -->
+
+    <!-- Libros -->
+    <div class="container libros_Gallery mt-4">
+        <?php
+            require('backend/config.php');
+            require('backend/libros.php');
+
+            $resultado = mysqli_query($conn, $libros);
+            while($row = mysqli_fetch_array($resultado)){
+                if($row['id_clase'] == $clase_iD){
+        ?>
+            <div class="card" style="background-image:url(img/images/Portada_Ejemplo.jpg)">
+                <div class="content">
+                    <a class="parte1" href="bookDetails.php?libro=<?php echo $row['iD'] ?>">
+                        <div class="titulo"><?php echo $row['titulo']?></div>	
                     </a>
+
+                    <div class="detalles">
+                    <?php
+                        if($_SESSION['rol'] == 'admin'){
+                            echo '<a href="bookEdit.php?libro='.$row['iD'].'" class="icon2 mx-3"><i class="fa-solid fa-pen"></i></a>';
+                        }
+                    ?>
+                        
+                        <a href="#" class="icon2 mx-3"><i class="fa-solid fa-eye"></i></a>
+                        <a href="bookDetails.php?libro=<?php echo $row['iD'] ?>" class="icon2 mx-3"><i class="fa-solid fa-circle-info"></i></a>
+                    </div>
                 </div>
             </div>
-        <?php }?>
+        <?php }
+            } ?>
     </div>
+
+    
 
     
 

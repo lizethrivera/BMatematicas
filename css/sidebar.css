@@ -8,8 +8,9 @@
     box-sizing: initial;
     border-left: 5px solid #4D5BF9;
     background: #4D5BF9;
-    transition: width 0.5s;
+    /* transition: width 0.5s; */
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .wrapper .navigation.active{
@@ -110,11 +111,12 @@
 
 .wrapper .navigation ul li a .title{
     position: relative;
-    display: block;
+    /* display: block; */
     padding-left: 10px;
     height: 60px;
     line-height: 60px;
     white-space: normal;
+    font-size: 14px;
 }
 
 .toogle{
@@ -147,11 +149,23 @@
 } */
 
 body.active .wrapper .navigation{
-    width: 300px;
+    width: 320px;
+}
+
+body.active .libraryTitle{
+    display: block;
+}
+
+body.active .title{
+    display: block;
+}
+
+.title{
+    display: none;
 }
 
 body.active .wrapper #navBar #leftBar{
-    margin-left: 250px;
+    margin-left: 280px;
     width: 100%;
 }
 
@@ -178,6 +192,13 @@ body.active .wrapper #navBar #leftBar{
     align-items: center;
 }
 
+.logo.active a{
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
 .libraryTitle{
-    color: white;    
+    color: white; 
+    display: none;   
 }

@@ -1,5 +1,17 @@
 <?php
     session_start();
+    require('backend/config.php');
+
+    $libro_iD = $_GET['libro'];
+
+    $consulta = "SELECT * FROM libros WHERE iD = '$libro_iD'";
+    $libroEncontrado = mysqli_query($conn, $consulta);
+
+    while($row = mysqli_fetch_array($libroEncontrado)){
+        $titulo = $row['titulo'];
+        $id_clase = $row['id_clase'];
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +20,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Biblioteca Virtual</title>
+    <title><?php echo $titulo?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e6dfebc255.js" crossorigin="anonymous"></script>
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <link rel="shortcut icon" href="img/logo_B.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/bookDetails.css">
     
 </head>
 <body>
@@ -38,7 +51,7 @@
                                 require('backend/config.php');
                                 require('backend/buscar.php');
                             ?>
-                            <input type="submit" name="buscar" class="btn btn_common" value="B">
+                            <input type="submit" name="buscar" class="btn btn_common" value="E">
                         </div>
                     </form>
                 </div>
@@ -55,7 +68,7 @@
                         <div class="instructor row" style="display: flex;">
                             <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/images/<?php if($_SESSION['img_Perfil'] == NULL){echo "default_user.png";}else{echo "patricio.jpg";}?>" alt="" srcset=""></span>
                             <div class="infoInstructor col-11">
-                                <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;"><?php echo $_SESSION['nombreCompleto']?></h5>
+                                <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;"><?php echo $_SESSION['usuario']?></h5>
                                 <small class = "text-muted" style="margin-left: 10px;"><?php echo $_SESSION['correo']?></small>
                             </div>
                         </div>
@@ -81,8 +94,10 @@
 
         <div class="navigation">
             <div class="logo">
-                <span><i class="fa-solid fa-circle-nodes"></i></span>
-                <span class="libraryTitle">Biblioteca Virtual</span>
+                <a href="home.php">
+                    <span><i class="fa-solid fa-circle-nodes"></i></span>
+                    <span class="libraryTitle">Biblioteca Virtual</span>
+                </a>
             </div>
             <ul id="clasesSideBar">
                 <?php
@@ -91,18 +106,18 @@
 
                     $resultado = mysqli_query($conn, $clases);
                     while($row = mysqli_fetch_array($resultado)){
-                        // if($row['iD'] != 1){
-                        //     $class = "list";
-                        // }else{
-                        //     $class = "list active";
-                        // }
+                        if($row['iD'] == $id_clase){
+                            $class = "list active";
+                        }else{
+                            $class = "list";
+                        }
 
                     $min = 0;
                     $max = 255;
 
                 ?>
 
-                <li class="list">
+                <li class="<?php echo $class?>">
                     <!-- <b></b>
                     <b></b> -->
                     <a href="homeBooks.php?clase=<?php echo $row['iD']?>">
@@ -119,34 +134,69 @@
     
     <div class="booksTitles">
         <div class="iconBook">
-            <span class="bookIcon"><i class="fa-solid fa-code-merge"></i></span>
+            <span class="bookIcon"><i class="fa-solid fa-book"></i></span>
         </div>
-        <span><h3>Hola de nuevo <?php echo $_SESSION['nombreCompleto']?>!</h3></span>
+        <span><h3><?php echo $titulo?></h3></span>
     </div>
 
-    <!-- Classes Info -->
-    <div class="cuerpo" id="tarjetasClases">
-        <?php	
-            require('backend/config.php');
-            require('backend/clases.php');
-
-            $resultado = mysqli_query($conn, $clases);
-            while ($row = mysqli_fetch_array($resultado)) {
-
-                ?>
-            <div class="tarjeta">
-                <div class="cabecera" style="background: url(img/home/classes-background/img<?php echo $row['iD']?>.jpg);background-repeat: no-repeat;-webkit-background-size: cover;background-size: cover;">
-                </div>
-                
-                <div class="medio">				
-                    <a class="parte1" href="homeBooks.php?clase=<?php echo $row['iD']?>">
-                        <div class="titulo"><?php echo $row['nombreClase']?></div>	
-                    </a>
-                </div>
+    <div class="container datos_Libro mt-4">
+        <div class="form">
+        <div class="row">
+            <div class="col-6">
+                <img class="img_Portada" src="img/images/Portada_Ejemplo.jpg" alt="" srcset="">
             </div>
-        <?php }?>
-    </div>
 
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6 mb-3 mt-3">
+                        <label for="titulo" class="form-label">Titulo</label>
+                        <input type="text" class="form-control" name="titulo">
+                    </div>
+                    
+                    <div class="col-6 mb-3 mt-3">
+                        <label for="autor" class="form-label">Autor</label>
+                        <input type="text" class="form-control" name="autor">
+                    </div>
+
+                    <div class="col-6 mb-3 mt-3">
+                        <label for="editorial" class="form-label">Editorial</label>
+                        <input type="text" class="form-control" name="editorial">
+                    </div>
+
+                    <div class="col-6 mb-3 mt-3">
+                        <label for="edicion" class="form-label">Edicion</label>
+                        <input type="number" class="form-control" name="edicion">
+                    </div>
+
+
+                    <div class="col-4 mb-3 mt-3">
+                        <label for="isbn" class="form-label">ISBN</label>
+                        <input type="number" class="form-control" name="isbn">
+                    </div>
+
+                    <div class="col-4 mb-3 mt-3">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control" name="fecha">
+                    </div>
+
+                    <div class="col-4 mb-3 mt-3">
+                        <label for="no_paginas" class="form-label">No. de Paginas</label>
+                        <input type="number" class="form-control" name="no_paginas">
+                    </div>
+
+                    <div class="col-12 mt-4 leer">
+                        <a class="btn leer_libro">Leer Libro</a>
+                    </div>
+
+                </div>
+    
+            </div>
+        </div>
+            
+            
+        </div>
+
+    </div>
     
 
     <!-- Modal -->

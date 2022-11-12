@@ -134,11 +134,11 @@ function obtenerInstructores() {
     }
 
 function obtenerClases(indice) {
-    //console.log("Entro a funcion", indice);
+    console.log("Entro a funcion", indice);
 
     indiceInstructorSeleccionada = indice;
-    document.getElementById('tarjetasClases').innerHTML = '';
-    document.getElementById('clasesSideBar').innerHTML = '';
+    // document.getElementById('tarjetasClases').innerHTML = '';
+    // document.getElementById('clasesSideBar').innerHTML = '';
     // document.getElementById('profilePic').innerHTML = `<img id="imgInstructor" src="img/home/profile-pics/${classroom[indice].instructor.imagen}" alt="" srcset=""></img>`;
 
     for (let i = 0; i < classroom[indice].clases.length; i++) {
@@ -150,7 +150,6 @@ function obtenerClases(indice) {
         let g = Math.floor(Math.random() * (255 - 0) + 0);
         let b = Math.floor(Math.random() * (255 - 0) + 0);
 
-        console.log(i)
         let nImagen = "img"+ random+".jpg";
         //console.log(nImagen);
         
@@ -160,35 +159,35 @@ function obtenerClases(indice) {
             classLi = "list";
         }
 
-        document.getElementById('clasesSideBar').innerHTML += `
-            <li class="${classLi}">
-                <b></b>
-                <b></b>
-                <a href="#">
-                    <span class="icon"><i class="rightBarIcons" style="margin-top: 12px; margin-left: 10px; background-color: rgb(${r},${g},${b}); color: white; font-weight: 600">${element[i].nombreClase.charAt(0)}</i></span>
-                    <span class="title">${element[i].nombreClase}</span>
-                </a>
-            </li>
-        `;
+        // document.getElementById('clasesSideBar').innerHTML += `
+        //     <li class="${classLi}">
+        //         <b></b>
+        //         <b></b>
+        //         <a href="#">
+        //             <span class="icon"><i class="rightBarIcons" style="margin-top: 12px; margin-left: 10px; background-color: rgb(${r},${g},${b}); color: white; font-weight: 600">${element[i].nombreClase.charAt(0)}</i></span>
+        //             <span class="title">${element[i].nombreClase}</span>
+        //         </a>
+        //     </li>
+        // `;
 
         
-        document.getElementById('tarjetasClases').innerHTML += `
-        <div class="tarjeta">
-			<div class="cabecera" style="background: url(img/home/classes-background/${nImagen});background-repeat: no-repeat;-webkit-background-size: cover;background-size: cover;">
-			</div>
+        // document.getElementById('tarjetasClases').innerHTML += `
+        // <div class="tarjeta">
+		// 	<div class="cabecera" style="background: url(img/home/classes-background/${nImagen});background-repeat: no-repeat;-webkit-background-size: cover;background-size: cover;">
+		// 	</div>
             
-			<div class="medio">				
-                <a class="parte1" href="">
-                    <div class="titulo">${element[i].seccion} - ${element[i].nombreClase}</div>	
-                </a>
-			</div>
+		// 	<div class="medio">				
+        //         <a class="parte1" href="">
+        //             <div class="titulo">${element[i].seccion} - ${element[i].nombreClase}</div>	
+        //         </a>
+		// 	</div>
 
-            <div class="pie">				
-				<span class="icon2"><i class="fa-solid fa-pen"></i></span>
-				<span class="icon1"><i class="fa-solid fa-eye"></i></span>
-			</div>
-		</div>
-        `;
+        //     <div class="pie">				
+		// 		<span class="icon2"><i class="fa-solid fa-pen"></i></span>
+		// 		<span class="icon1"><i class="fa-solid fa-eye"></i></span>
+		// 	</div>
+		// </div>
+        // `;
     }
 
     let list = document.querySelectorAll('.list');
@@ -232,4 +231,4 @@ function vaciarCampos() {
     document.getElementById('aula').value = '';
 }
 
-obtenerClases(0);
+obtenerClases(2);

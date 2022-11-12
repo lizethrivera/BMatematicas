@@ -1,0 +1,38 @@
+.datos_Libro .img_Portada{
+    width: 300px;
+    height: 450px;
+}
+
+.datos_Libro{
+    text-align: center;
+}
+
+body.active .datos_Libro, body.active .booksTitles{
+    margin-left: 350px;
+    width: auto;
+}
+
+body.active .datos_Libro{
+    margin-left: 250px;
+    width: auto;
+}
+
+.leer_libro{
+    width: auto;
+    background-color: #6C63FF;
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 134px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.leer_libro:hover{
+    color: white;
+    background: #847fec;
+}

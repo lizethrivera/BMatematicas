@@ -7,9 +7,9 @@
             $nombreCompleto = $conn->real_escape_string($_POST['nombreCompleto']);
             $usuario = $conn->real_escape_string($_POST['usuario']);
             $correo = $conn->real_escape_string($_POST['correo']);
-            $password = md5($_POST['password']);
+            $password = $_POST['password'];
 
-            $select = "SELECT * FROM usuarios WHERE correo = '$correo' && password = '$password'";
+            $select = "SELECT * FROM usuarios WHERE correo = '$correo' OR usuario = '$usuario'";
 
             $resultado = mysqli_query($conn, $select);
 
