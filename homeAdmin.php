@@ -50,11 +50,17 @@
                 </div> -->
                 
                 <div class="rightBarIcons dropdown" id="profilePicMenu">
-                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" src="img/images/<?php if($_SESSION['img_Perfil'] == NULL){echo "default_user.png";}else{echo "patricio.jpg";}?>" alt="" srcset=""></img></span>
+                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" <?php
+                        if($_SESSION['img_Perfil'] == NULL){ echo 'src="img/images/default_user.png"';}else{
+                            echo 'src="data:'.$_SESSION["tipo_imagen"].';base64,'.base64_encode($_SESSION["img_Perfil"]).'"';}?>
+                        alt="" srcset=""></span>
                     <!-- DropDownMenu -->
                     <div class="dropdown-menu dropdown-menu-right" style="width: 300px; border-radius: 3%;" aria-labelledby="imgInstructor" id="dropMenu">
                         <div class="instructor row" style="display: flex;">
-                            <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/images/<?php if($_SESSION['img_Perfil'] == NULL){echo "default_user.png";}else{echo "patricio.jpg";}?>" alt="" srcset=""></span>
+                            <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" <?php
+                        if($_SESSION['img_Perfil'] == NULL){ echo 'src="img/images/default_user.png"';}else{
+                            echo 'src="data:'.$_SESSION["tipo_imagen"].';base64,'.base64_encode($_SESSION["img_Perfil"]).'"';}?>
+                        alt="" srcset=""></span>
                             <div class="infoInstructor col-11">
                                 <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;"><?php echo $_SESSION['nombreCompleto']?></h5>
                                 <small class = "text-muted" style="margin-left: 10px;"><?php echo $_SESSION['correo']?></small>
@@ -124,7 +130,7 @@
 
     <!-- Agregar Libro Formulario -->
     <div class="container form-aggLibro">
-        <form action="">
+        <form action="backend/guardarLibro.php?clase=<?php echo $_GET['clase']?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-4 mb-3 mt-3">
                     <label for="titulo" class="form-label">Titulo</label>
@@ -143,31 +149,36 @@
 
                 <div class="col-4 mb-3 mt-3">
                     <label for="edicion" class="form-label">Edicion</label>
-                    <input type="number" class="form-control" name="edicion">
+                    <input type="text" class="form-control" name="edicion">
                 </div>
 
 
                 <div class="col-4 mb-3 mt-3">
                     <label for="isbn" class="form-label">ISBN</label>
-                    <input type="number" class="form-control" name="isbn">
+                    <input type="text" class="form-control" name="isbn">
                 </div>
 
                 <div class="col-4 mb-3 mt-3">
-                    <label for="fecha" class="form-label">Fecha</label>
-                    <input type="date" class="form-control" name="fecha">
+                    <label for="pais" class="form-label">Pais</label>
+                    <input type="text" class="form-control" name="pais">
                 </div>
 
-                <div class="col-6 mb-3 mt-3">
+                <div class="col-2 mb-3 mt-3">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="text" class="form-control" name="fecha">
+                </div>
+
+                <div class="col-2 mb-3 mt-3">
                     <label for="no_paginas" class="form-label">No. de Paginas</label>
                     <input type="number" class="form-control" name="no_paginas">
                 </div>
 
-                <div class="col-6 mb-3 mt-3">
+                <div class="col-4 mb-3 mt-3">
                     <label for="portada" class="form-label">Imagen Portada</label>
                     <input type="file" class="form-control" name="portada">
                 </div>
 
-                <div class="col-6 mb-3 mt-3">
+                <div class="col-4 mb-3 mt-3">
                     <label for="archivo" class="form-label">Adjuntar Archivo PDF</label>
                     <input type="file" class="form-control" name="archivo">
                 </div>

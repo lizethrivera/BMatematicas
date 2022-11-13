@@ -62,7 +62,9 @@
                 </div> -->
                 
                 <div class="rightBarIcons dropdown" id="profilePicMenu">
-                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" src="img/images/<?php if($_SESSION['img_Perfil'] == NULL){echo "default_user.png";}else{echo "patricio.jpg";}?>" alt="" srcset=""></img></span>
+                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" <?php
+                        if($_SESSION['img_Perfil'] == NULL){ echo 'src="img/images/default_user.png"';}else{
+                            echo 'src="data:'.$_SESSION["tipo_imagen"].';base64,'.base64_encode($_SESSION["img_Perfil"]).'"';}?> alt="" srcset=""></img></span>
                     <!-- DropDownMenu -->
                     <div class="dropdown-menu dropdown-menu-right" style="width: 300px; border-radius: 3%;" aria-labelledby="imgInstructor" id="dropMenu">
                         <div class="instructor row" style="display: flex;">
@@ -165,18 +167,18 @@
 
                     <div class="col-6 mb-3 mt-3">
                         <label for="edicion" class="form-label">Edicion</label>
-                        <input type="number" class="form-control" name="edicion">
+                        <input type="text" class="form-control" name="edicion">
                     </div>
 
 
                     <div class="col-4 mb-3 mt-3">
                         <label for="isbn" class="form-label">ISBN</label>
-                        <input type="number" class="form-control" name="isbn">
+                        <input type="text" class="form-control" name="isbn">
                     </div>
 
                     <div class="col-4 mb-3 mt-3">
                         <label for="fecha" class="form-label">Fecha</label>
-                        <input type="date" class="form-control" name="fecha">
+                        <input type="text" class="form-control" name="fecha">
                     </div>
 
                     <div class="col-4 mb-3 mt-3">

@@ -6,13 +6,10 @@
         }else{
             $buscarL = $conn->real_escape_string($_POST['buscar_l']);
 
-            $consulta = "SELECT * FROM libros WHERE titulo = '$buscarL' OR autor = '$buscarL'";
+            $consulta = "SELECT * FROM libros WHERE titulo = '$buscarL' OR autor LIKE '%$buscarL%'";
             $libroEncontrado = mysqli_query($conn, $consulta);
 
-            while($row = mysqli_fetch_array($libroEncontrado)){
-                
-                header("Location: bookDetails.php?libro=$row[iD]");
-            }
+            header("Location: homeBooksSearch.php?busqueda=$buscarL");
 
 
         }

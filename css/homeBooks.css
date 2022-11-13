@@ -1,6 +1,4 @@
-.libros_Gallery{
-    display: flex;
-}
+
 
 .card {
     margin: 20px;
@@ -13,7 +11,7 @@
     overflow: hidden;
 }
 
-.content {
+/* .content {
     width: 100%;
     height: 45%;
     display: flex;
@@ -24,20 +22,28 @@
     opacity: 0;
     transition: .5s;
     margin-top: auto;
+} */
+
+.content{
+    text-align: center;
 }
 
 .content h2, .content a {
-    color: rgba(255, 255, 255, .8);
+    color: #3c4043;
     margin: 10px 0;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
-.card:hover .content {
+/* .card:hover .content {
     opacity: 1;
-}
+} */
 
 .libros_Gallery .detalles{
     display: flex;
     flex-direction: row;
+    align-content: center;
+    justify-content: center;
 }
 
 .libros_Gallery .detalles .icon2{
@@ -47,4 +53,16 @@
 body.active .libros_Gallery, body.active .bookDetails{
     margin-left: 350px;
     width: auto;
+}
+
+body.active .card-Book{
+    width: 13rem;
+}
+
+.card-img, .card-img-bottom, .card-img-top{
+    height: 330px!important;
+}
+
+.card-Book{
+    width: 15rem;
 }

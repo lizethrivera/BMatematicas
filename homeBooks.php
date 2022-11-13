@@ -62,11 +62,17 @@
                 </div> -->
                 
                 <div class="rightBarIcons dropdown" id="profilePicMenu">
-                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" src="img/images/<?php if($_SESSION['img_Perfil'] == NULL){echo "default_user.png";}else{echo "patricio.jpg";}?>" alt="" srcset=""></img></span>
+                    <span data-toggle="dropdown" aria-expanded="false" id="profilePic"><img id="imgInstructor" <?php
+                        if($_SESSION['img_Perfil'] == NULL){ echo 'src="img/images/default_user.png"';}else{
+                            echo 'src="data:'.$_SESSION["tipo_imagen"].';base64,'.base64_encode($_SESSION["img_Perfil"]).'"';}?>
+                        alt="" srcset=""></span>
                     <!-- DropDownMenu -->
                     <div class="dropdown-menu dropdown-menu-right" style="width: 300px; border-radius: 3%;" aria-labelledby="imgInstructor" id="dropMenu">
                         <div class="instructor row" style="display: flex;">
-                            <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" src="img/images/<?php if($_SESSION['img_Perfil'] == NULL){echo "default_user.png";}else{echo "patricio.jpg";}?>" alt="" srcset=""></span>
+                            <span class="dropdown-item infoInstructor col-1"><img id="imgInstructor" <?php
+                        if($_SESSION['img_Perfil'] == NULL){ echo 'src="img/images/default_user.png"';}else{
+                            echo 'src="data:'.$_SESSION["tipo_imagen"].';base64,'.base64_encode($_SESSION["img_Perfil"]).'"';}?>
+                        alt="" srcset=""></span>
                             <div class="infoInstructor col-11">
                                 <h5 style="margin-left: 10px; margin-bottom: 0px; font-size: 15px;"><?php echo $_SESSION['nombreCompleto']?></h5>
                                 <small class = "text-muted" style="margin-left: 10px;"><?php echo $_SESSION['correo']?></small>
@@ -170,6 +176,8 @@
 
     <!-- Libros -->
     <div class="container libros_Gallery mt-4">
+        <div class="row">
+
         <?php
             require('backend/config.php');
             require('backend/libros.php');
@@ -178,26 +186,30 @@
             while($row = mysqli_fetch_array($resultado)){
                 if($row['id_clase'] == $clase_iD){
         ?>
-            <div class="card" style="background-image:url(img/images/Portada_Ejemplo.jpg)">
-                <div class="content">
-                    <a class="parte1" href="bookDetails.php?libro=<?php echo $row['iD'] ?>">
-                        <div class="titulo"><?php echo $row['titulo']?></div>	
-                    </a>
-
-                    <div class="detalles">
-                    <?php
-                        if($_SESSION['rol'] == 'admin'){
-                            echo '<a href="bookEdit.php?libro='.$row['iD'].'" class="icon2 mx-3"><i class="fa-solid fa-pen"></i></a>';
-                        }
-                    ?>
-                        
-                        <a href="#" class="icon2 mx-3"><i class="fa-solid fa-eye"></i></a>
-                        <a href="bookDetails.php?libro=<?php echo $row['iD'] ?>" class="icon2 mx-3"><i class="fa-solid fa-circle-info"></i></a>
+            <div class="col-3 col-md-3">
+            <div class="card card-Book" style="height: 480px;">
+                <a href="bookDetails.php?libro=<?php echo $row['iD'] ?>"><img class="card-img-top" <?php echo 'src="data:'.$row["tipo_imgPortada"].';base64,'.base64_encode($row["imagen_portada"]).'"'?> alt="Card image cap"></a>
+                <div class="card-body">
+                    <div class="content">
+                        <a class="parte1 card-text" href="bookDetails.php?libro=<?php echo $row['iD'] ?>"><?php echo $row['titulo']?>
+                        </a>
+                        <div class="detalles">
+                            <?php
+                                if($_SESSION['rol'] == 'admin'){
+                                    echo '<a href="bookEdit.php?libro='.$row['iD'].'" class="icon2 mx-3"><i class="fa-solid fa-pen"></i></a>';
+                                }
+                            ?>
+                                
+                                <a href="#" class="icon2 mx-3"><i class="fa-solid fa-eye"></i></a>
+                                <a href="bookDetails.php?libro=<?php echo $row['iD'] ?>" class="icon2 mx-3"><i class="fa-solid fa-circle-info"></i></a>
+                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         <?php }
             } ?>
+                    </div>
     </div>
 
     

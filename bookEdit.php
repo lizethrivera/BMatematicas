@@ -146,7 +146,7 @@
             <div class="row">
                 <div class="col-4 mb-3 mt-3">
                     <label for="titulo" class="form-label">Titulo</label>
-                    <input type="text" class="form-control" value="<?php echo $titulo?>" name="titulo">
+                    <input type="text" class="form-control" name="titulo">
                 </div>
     
                 <div class="col-4 mb-3 mt-3">
@@ -161,23 +161,23 @@
 
                 <div class="col-4 mb-3 mt-3">
                     <label for="edicion" class="form-label">Edicion</label>
-                    <input type="number" class="form-control" name="edicion">
+                    <input type="text" class="form-control" name="edicion">
                 </div>
 
 
                 <div class="col-4 mb-3 mt-3">
                     <label for="isbn" class="form-label">ISBN</label>
-                    <input type="number" class="form-control" name="isbn">
+                    <input type="text" class="form-control" name="isbn">
                 </div>
 
                 <div class="col-4 mb-3 mt-3">
                     <label for="fecha" class="form-label">Fecha</label>
-                    <input type="date" class="form-control" name="fecha">
+                    <input type="text" class="form-control" name="fecha">
                 </div>
 
                 <div class="col-6 mb-3 mt-3">
                     <label for="no_paginas" class="form-label">No. de Paginas</label>
-                    <input type="number" class="form-control" name="no_paginas">
+                    <input type="text" class="form-control" name="no_paginas">
                 </div>
 
                 <div class="col-6 mb-3 mt-3">

@@ -17,18 +17,22 @@
                 while($row = $resultado->fetch_array()){
                     if ($row['rol'] == 'admin') {
                         session_start();
+                        $_SESSION['iD'] = $row['iD'];
                         $_SESSION['nombreCompleto'] = $row['nombreCompleto'];
                         $_SESSION['usuario'] = $row['usuario'];
                         $_SESSION['correo'] = $row['correo'];
                         $_SESSION['img_Perfil'] = $row['img_Perfil'];
+                        $_SESSION['tipo_imagen'] = $row['tipo_imagen'];
                         $_SESSION['rol'] = $row['rol'];
                         header("Location: home.php");
                     }elseif($row['rol'] == 'usuario'){
                         session_start();
+                        $_SESSION['iD'] = $row['iD'];
                         $_SESSION['nombreCompleto'] = $row['nombreCompleto'];
                         $_SESSION['usuario'] = $row['usuario'];
                         $_SESSION['correo'] = $row['correo'];
                         $_SESSION['img_Perfil'] = $row['img_Perfil'];
+                        $_SESSION['tipo_imagen'] = $row['tipo_imagen'];
                         $_SESSION['rol'] = $row['rol'];
                         header("Location: home.php");
                     }else {
